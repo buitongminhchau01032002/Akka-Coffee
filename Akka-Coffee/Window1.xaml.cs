@@ -25,8 +25,15 @@ namespace Akka_Coffee
         {
             InitializeComponent();
             this.inProgressProducts = inProgressProducts;
+            serviceIC.ItemsSource = inProgressProducts;
+
         }
 
+        private void Products_Click(object sender, RoutedEventArgs e)
+        {
+            
+            
+        }
         private void BtnDialogOk_Click(object sender, RoutedEventArgs e)
 
         {
