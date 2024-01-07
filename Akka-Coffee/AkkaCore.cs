@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Akka_Coffee
 {
-
+    /*
     public class Product
     {
         public Product(string name, int price)
@@ -130,10 +130,12 @@ namespace Akka_Coffee
             {
                 Console.WriteLine("{0,10}   {1,-15}{2,7}   {3,-15}", "Table", "Product", "Price", "Time");
                 Console.WriteLine("------------------------------------------------------------------");
+                string AllBill = "";
                 bills.ForEach(bill =>
                 {
-                    DisplayBill(bill);
+                    AllBill+= bill.TableNumber+ bill.Product.Name+bill.Product.Price+ bill.Time.ToString() + "\n";
                 });
+                System.Windows.MessageBox.Show(AllBill);
             });
         }
 
@@ -172,12 +174,14 @@ namespace Akka_Coffee
             {
                 Console.WriteLine("{0,10}   {1,-20}", "Table", "Product");
                 Console.WriteLine("------------------------------------------------------------------");
+                string products = "";
                 inProgressProducts.ForEach(p =>
                 {
                     Console.WriteLine("{0,10}   {1,-20}", p.TableNumber, p.ProductName);
+                    products += p.ProductName + p.TableNumber + "\n";
                 });
 
-                System.Windows.MessageBox.Show("fdsfas");
+                System.Windows.MessageBox.Show(products );
 
             });
         }
@@ -214,5 +218,5 @@ namespace Akka_Coffee
                 productProcessingActor.Tell(msg);
             });
         }
-    }
+    }*/
 }
