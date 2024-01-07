@@ -31,7 +31,9 @@
 
                                             <StackPanel Margin="0,5,0,0" Orientation="Vertical">
                                                 <!--    <Image Source="{Binding imagesource}"  Width="140" Height="140"/>-->
-                                                <TextBlock HorizontalAlignment="Center" Text="{Binding Name}" FontSize="18" FontWeight="Normal"></TextBlock>
+                                                <TextBlock HorizontalAlignment="Center" Text="{Binding ProductName}" FontSize="18" FontWeight="Normal"></TextBlock>
+                                                <TextBlock HorizontalAlignment="Center" Text="{Binding TableNumber}" FontSize="18" FontWeight="Normal"></TextBlock>
+
                                             </StackPanel>
                                         </Border>
                                         <TextBlock HorizontalAlignment="Center" Text="{Binding Price}" FontSize="20" FontWeight="Medium"></TextBlock>
