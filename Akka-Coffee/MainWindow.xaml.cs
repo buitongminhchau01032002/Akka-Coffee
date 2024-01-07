@@ -28,7 +28,7 @@ namespace Akka_Coffee
         IActorRef productProcessingActor;
         
         List<Product> products;
-        List<int> Table = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        public List<int> Table = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
         public MainWindow()
         {
@@ -54,6 +54,15 @@ namespace Akka_Coffee
 
         }
 
+        public void removeProduct(int indexTable)
+        {
+            Table.Add(indexTable);
+            Table.Sort();
+              
+            Tableindex.Items.Refresh();
+            Tableindex.SelectedIndex = 0;
+        }
+
         private void ShowInprogressProducts_Click(object sender, RoutedEventArgs e)
         {
             managerActor.Tell(new DisplayInprogressProductsMessage());
@@ -68,8 +77,20 @@ namespace Akka_Coffee
         private void Products_Click(object sender, RoutedEventArgs e)
         {
             Product currentProduct= (sender as Button).DataContext as Product;
-            managerActor.Tell(new CreateOrderMessage(Int32.Parse(Tableindex.Text), currentProduct));
+            Tableindex.Items.Refresh();
+            int selectedTable = Tableindex.SelectedIndex;
 
+            managerActor.Tell(new CreateOrderMessage(Int32.Parse(Tableindex.Text), currentProduct));
+            // Clear the existing table
+            ClearTable(selectedTable);
+        }
+        private void ClearTable(int tableNumber)
+        {
+            this.Table.RemoveAt(tableNumber);
+            //Tableindex.ItemsSource = null; // Clear existing items
+            Tableindex.Items.Refresh(); // Set the updated items
+            // Đặt lại selected index về 
+            Tableindex.SelectedIndex = 0;
         }
 
     }
