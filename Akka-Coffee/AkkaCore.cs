@@ -121,27 +121,21 @@ namespace Akka_Coffee
             {
                 var bill = new Bill(msg.TableNumber, msg.Product, DateTime.Now);
                 bills.Add(bill);
-                Console.WriteLine("{0,10}   {1,-15}{2,7}   {3,-15}", "Table", "Product", "Price", "Time");
-                Console.WriteLine("------------------------------------------------------------------");
-                DisplayBill(bill);
             });
 
             Receive<DisplayAllBillsMessage>(msg =>
             {
-                Console.WriteLine("{0,10}   {1,-15}{2,7}   {3,-15}", "Table", "Product", "Price", "Time");
-                Console.WriteLine("------------------------------------------------------------------");
-                string AllBill = "";
-                bills.ForEach(bill =>
+                Application.Current.Dispatcher.Invoke((Action)delegate
                 {
-                    AllBill+= bill.TableNumber+ bill.Product.Name+bill.Product.Price+ bill.Time.ToString() + "\n";
-                });
-                System.Windows.MessageBox.Show(AllBill);
-            });
-        }
+                    // your code
+                    BillDialog dialog = new BillDialog(bills);
 
-        private void DisplayBill(Bill bill)
-        {
-            Console.WriteLine("{0,10}   {1,-15}{2,7}   {3,-15}", bill.TableNumber, bill.Product.Name, bill.Product.Price, bill.Time.ToString());
+                    if (dialog.ShowDialog() == true)
+                    {
+
+                    }
+                });
+            });
         }
     }
 
@@ -226,6 +220,6 @@ namespace Akka_Coffee
                 productProcessingActor.Tell(msg);
             });
         }
-}
+    }
 
 }
