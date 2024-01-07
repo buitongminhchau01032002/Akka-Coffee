@@ -180,9 +180,10 @@ namespace Akka_Coffee
                     Console.WriteLine("{0,10}   {1,-20}", p.TableNumber, p.ProductName);
                     products += p.ProductName + p.TableNumber + "\n";
                 });
+                ActorSelection managerActor = Context.ActorSelection("/user/ManagerActor");
                 Application.Current.Dispatcher.Invoke((Action)delegate {
                     // your code
-                    Window1 dialog = new Window1(inProgressProducts);
+                    Window1 dialog = new Window1(inProgressProducts, managerActor);
 
                     if (dialog.ShowDialog() == true)
                     {

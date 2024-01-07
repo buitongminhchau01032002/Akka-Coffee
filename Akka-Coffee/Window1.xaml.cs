@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Akka.Actor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,17 +22,19 @@ namespace Akka_Coffee
     {
         public string product = "dfasdf";
         private List<InprogressProduct> inProgressProducts;
-        public Window1(List<InprogressProduct> inProgressProducts)
+        ActorSelection managerActor;
+        public Window1(List<InprogressProduct> inProgressProducts, ActorSelection managerActor)
         {
             InitializeComponent();
             this.inProgressProducts = inProgressProducts;
             serviceIC.ItemsSource = inProgressProducts;
+            this.managerActor = managerActor;
 
         }
 
         private void Products_Click(object sender, RoutedEventArgs e)
         {
-            
+            managerActor.Tell(new ProductCompletedMessage(1));
             
         }
         private void BtnDialogOk_Click(object sender, RoutedEventArgs e)
