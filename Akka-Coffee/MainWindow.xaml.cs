@@ -36,7 +36,7 @@ namespace Akka_Coffee
 
             orderActor = system.ActorOf(Props.Create(() => new OrderActor()), "OrderActor");
             billingActor = system.ActorOf(Props.Create(() => new BillingActor()), "BillingActor");
-            productProcessingActor = system.ActorOf(Props.Create(() => new ProductProcessingActor()), "ProductProcessingActor");
+            productProcessingActor = system.ActorOf(Props.Create(() => new ProductProcessingActor(this)), "ProductProcessingActor");
 
             products = new List<Product>()
             {
@@ -46,11 +46,14 @@ namespace Akka_Coffee
 
             //managerActor.Tell(new DisplayInprogressProductsMessage());
 
+            
+
         }
 
         private void ShowInprogressProducts_Click(object sender, RoutedEventArgs e)
         {
             managerActor.Tell(new DisplayInprogressProductsMessage());
+            
         }
     }
 }

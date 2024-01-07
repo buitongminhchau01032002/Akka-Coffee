@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Akka_Coffee
 {
@@ -130,10 +131,12 @@ namespace Akka_Coffee
             {
                 Console.WriteLine("{0,10}   {1,-15}{2,7}   {3,-15}", "Table", "Product", "Price", "Time");
                 Console.WriteLine("------------------------------------------------------------------");
+
                 bills.ForEach(bill =>
                 {
-                    DisplayBill(bill);
+                    //DisplayBill(bill);
                 });
+
             });
         }
 
@@ -147,7 +150,7 @@ namespace Akka_Coffee
     {
         private List<InprogressProduct> inProgressProducts = new List<InprogressProduct>() { };
 
-        public ProductProcessingActor()
+        public ProductProcessingActor(MainWindow w)
         {
             Receive<ProcessProductMessage>(msg =>
             {
@@ -172,12 +175,21 @@ namespace Akka_Coffee
             {
                 Console.WriteLine("{0,10}   {1,-20}", "Table", "Product");
                 Console.WriteLine("------------------------------------------------------------------");
+                string products = "";
                 inProgressProducts.ForEach(p =>
                 {
                     Console.WriteLine("{0,10}   {1,-20}", p.TableNumber, p.ProductName);
+                    products += p.ProductName;
                 });
+                Application.Current.Dispatcher.Invoke((Action)delegate {
+                    // your code
+                    Window1 dialog = new Window1(inProgressProducts);
 
-                System.Windows.MessageBox.Show("fdsfas");
+                    if (dialog.ShowDialog() == true)
+                    {
+
+                    }
+                });
 
             });
         }
