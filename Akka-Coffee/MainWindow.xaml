@@ -48,7 +48,7 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </WrapPanel>
-        <ComboBox SelectedIndex="0" x:Name="Tableindex">
+        <ComboBox x:FieldModifier="public" SelectedIndex="0" x:Name="Tableindex">
         </ComboBox>
     </StackPanel>
 </Window>

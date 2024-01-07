@@ -54,6 +54,15 @@ namespace Akka_Coffee
 
         }
 
+        public void removeProduct(int indexTable)
+        {
+            Table.Add(indexTable);
+            Table.Sort();
+              
+            Tableindex.Items.Refresh();
+            Tableindex.SelectedIndex = 0;
+        }
+
         private void ShowInprogressProducts_Click(object sender, RoutedEventArgs e)
         {
             managerActor.Tell(new DisplayInprogressProductsMessage());
