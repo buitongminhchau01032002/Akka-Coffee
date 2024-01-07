@@ -162,6 +162,7 @@ namespace Akka_Coffee
                 if (removeProduct != null)
                 {
                     inProgressProducts.Remove(removeProduct);
+                    w.Table.Add(removeProduct.TableNumber);
                 }
                 else
                 {

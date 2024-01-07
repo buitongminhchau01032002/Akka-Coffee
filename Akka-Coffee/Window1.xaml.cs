@@ -35,9 +35,7 @@ namespace Akka_Coffee
         private void Products_Click(object sender, RoutedEventArgs e)
         {
             InprogressProduct currentProduct = (sender as Button).DataContext as InprogressProduct;
-
             managerActor.Tell(new ProductCompletedMessage(currentProduct.TableNumber));
-            
         }
         private void BtnDialogOk_Click(object sender, RoutedEventArgs e)
 
