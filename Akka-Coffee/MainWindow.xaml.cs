@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -26,6 +27,7 @@ namespace Akka_Coffee
         IActorRef orderActor;
         IActorRef billingActor;
         IActorRef productProcessingActor;
+
         
         List<Product> products;
         public List<int> Table = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -33,7 +35,7 @@ namespace Akka_Coffee
         public MainWindow()
         {
             InitializeComponent();
-
+/*
             var system = ActorSystem.Create("CafeSystem");
             managerActor = system.ActorOf(Props.Create(() => new ManagerActor()), "ManagerActor");
 
@@ -50,17 +52,23 @@ namespace Akka_Coffee
             Tableindex.ItemsSource = Table;
             //managerActor.Tell(new DisplayInprogressProductsMessage());
 
-            
+            */
 
         }
 
+        private void loaded(object sender, RoutedEventArgs e)
+        {
+            Container.Navigate(new System.Uri("Pages/Auth/Login.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        /*
         public void removeProduct(int indexTable)
         {
             Table.Add(indexTable);
             Table.Sort();
               
             Tableindex.Items.Refresh();
-            Tableindex.SelectedIndex = 0;
+            Tableindex.SelectedIndex=0;
         }
 
         private void ShowInprogressProducts_Click(object sender, RoutedEventArgs e)
@@ -92,7 +100,7 @@ namespace Akka_Coffee
             // Đặt lại selected index về 
             Tableindex.SelectedIndex = 0;
         }
-
+        */
     }
 
 }

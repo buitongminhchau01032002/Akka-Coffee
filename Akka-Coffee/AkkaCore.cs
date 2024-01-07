@@ -10,14 +10,21 @@ namespace Akka_Coffee
 {
     public class Product
     {
-        public Product(string name, int price)
+        public Product(string name, int price,string image)
         {
             Name = name;
             Price = price;
-        }
+            Image = image;
 
+
+        }
+        public Product()
+        { }
         public string Name { get; set; }
         public int Price { get; set; }
+
+        public string Image { get; set; }
+
     }
 
     public class InprogressProduct
@@ -158,7 +165,7 @@ namespace Akka_Coffee
                     inProgressProducts.Remove(removeProduct);
                     Application.Current.Dispatcher.Invoke(() =>
                     {
-                        w.removeProduct(removeProduct.TableNumber);
+                      //  w.removeProduct(removeProduct.TableNumber);
                     });
                 }
                 else

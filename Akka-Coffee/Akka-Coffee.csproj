@@ -11,6 +11,7 @@
   <ItemGroup>
     <PackageReference Include="Akka" Version="1.5.14" />
     <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
+    <PackageReference Include="PresentationFramework.Aero2" Version="1.0.1" />
   </ItemGroup>
 
 </Project>
